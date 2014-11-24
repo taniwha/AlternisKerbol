@@ -1,0 +1,13 @@
+Source license
+
+The source code to Alternis Kerbol is licensed under a CC BY-ND 4.0 license. This is primarily because the code of the mod is quite messy and not a good thing to base anything off of. If you [I]really[/I] want to, though, contact me and we can try to work something out.
+
+http://creativecommons.org/licenses/by-nd/4.0/
+
+---
+
+Art license:
+
+The art assets to Alternis Kerbol are licensed under a CC BY-NC 4.0 license.
+
+http://creativecommons.org/licenses/by-nc/4.0/
