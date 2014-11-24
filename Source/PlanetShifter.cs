@@ -40,8 +40,8 @@ namespace AlternisKerbol
 
         //Warp stuff
         private float[] newWarpLimits = { 0, 0, 0, 0, 0, 0, 0, 200000 };
-//        private float[] newWarpLimitsHyper = { 0, 0, 0, 0, 0, 0, 200000, 1000000 };
-//        private float[] newWarps = { 1, 10, 50, 100, 1000, 10000, 100000, 1000000 };
+        private float[] newWarpLimitsHyper = { 0, 0, 0, 0, 0, 0, 200000, 1000000 };
+        private float[] newWarps = { 1, 10, 50, 100, 1000, 10000, 100000, 1000000 };
 
         //Planets to move
         public CelestialBody cb_sun = null;
@@ -135,6 +135,7 @@ namespace AlternisKerbol
 					AKsettings = node;
 			}
 
+			float[] wltmp = newWarpLimits;
 			if (AKsettings != null) {
 				bool btmp;
 				if (AKsettings.HasValue("Enabled"))
@@ -144,8 +145,7 @@ namespace AlternisKerbol
 				//Don't bother continuing, mod is disabled...
 				if (!alternisEnabled)
 					return;
-/*
-				float[] wltmp = newWarpLimits;
+
 				if (AKsettings.HasValue("HyperWarp"))
 					if (bool.TryParse(AKsettings.GetValue("HyperWarp"), out btmp))
 						if (btmp && TimeWarp.fetch != null)
@@ -153,7 +153,7 @@ namespace AlternisKerbol
 							TimeWarp.fetch.warpRates = newWarps;
 							wltmp = newWarpLimitsHyper;
 						}
-*/
+
 				if (AKsettings.HasValue("EnableKerbinMoon"))
 					if (bool.TryParse(AKsettings.GetValue("EnableKerbinMoon"), out btmp))
 						enableKerbinMoon = btmp;
@@ -1054,7 +1054,7 @@ namespace AlternisKerbol
                             else if (cb2.gameObject.name == "Laythe") cb2.orbit.period = 52982; //14 hours 43 minutes 2 seconds
                             else cb2.orbit.period = GetNewPeriod(cb2); //Just calculate the rest
 
-                            cb2.timeWarpAltitudeLimits = newWarpLimits;
+                            cb2.timeWarpAltitudeLimits = wltmp;
 
                             //Thank you, eggrobin & NathanKell
                             cb2.orbit.meanAnomaly = cb2.orbit.meanAnomalyAtEpoch; // let KSP handle epoch
