@@ -179,7 +179,7 @@ namespace AlternisKerbol
                 if (newJoolTexture != null)
                     print("New jool texture loaded");
 
-                newLaytheScaledBump = GameDatabase.Instance.GetTexture(path + "newlaythe_nrm", true);
+                newLaytheScaledBump = GameDatabase.Instance.GetTexture(path + "newlaythe_NRM", true);
                 if (newLaytheScaledBump != null)
                     print("New laythe bump loaded");
 
@@ -187,7 +187,7 @@ namespace AlternisKerbol
                 if (newLaytheScaledColor != null)
                     print("New laythe texture loaded");
 
-                newTyloScaledBump = GameDatabase.Instance.GetTexture(path + "newtylo_nrm", true);
+                newTyloScaledBump = GameDatabase.Instance.GetTexture(path + "newtylo_NRM", true);
                 if (newTyloScaledBump != null)
                     print("New tylo bump loaded");
 
@@ -199,7 +199,7 @@ namespace AlternisKerbol
                 if (newDunaScaledColor != null)
                     print("New duna texture loaded");
 
-                newDunaScaledBump = GameDatabase.Instance.GetTexture(path + "newduna_nrm", true);
+                newDunaScaledBump = GameDatabase.Instance.GetTexture(path + "newduna_NRM", true);
                 if (newDunaScaledBump != null)
                     print("New duna bump loaded");
 
