@@ -110,6 +110,20 @@ namespace AlternisKerbol
         }
         #endregion
 
+		private void dumpxform (Transform t, string n = "")
+		{
+			Debug.Log (String.Format ("[Alternis] {0}", n + t.name));
+			foreach (PQSMod m in t.GetComponents<PQSMod> ()) {
+				Debug.Log (String.Format ("[Alternis] {0}: {1}", m, m.order));
+				//if (m is PQSMod_MapDecalTangent) {
+				//	var d = m as PQSMod_MapDecalTangent;
+				//	Debug.Log (String.Format ("[Alternis] {0}", d.position));
+				//}
+			}
+			foreach (Transform c in t)
+				dumpxform (c, n + t.name + ".");
+		}
+
         void Start()
         {
             //Load up all the settings crap
@@ -820,6 +834,9 @@ namespace AlternisKerbol
                     cb_laythe.scienceValues.FlyingHighDataValue = 2;
                     cb_laythe.scienceValues.RecoveryValue = 3;
 
+					dumpxform (cb_laythe.transform);
+					dumpxform (cb_duna.transform);
+					dumpxform (cb_tylo.transform);
 
                     print("PlanetShifter: Shifting Laythe terrain");
                     PQSLandControl cb_laythe_lc = cb_laythe.pqsController.gameObject.GetComponentInChildren<PQSLandControl>();
@@ -864,6 +881,18 @@ namespace AlternisKerbol
                         cb_laythe_hm.heightMapOffset = -400;
                         cb_laythe_hm.heightMapDeformity = 7000; //tweak deformity
                         Destroy(newLaytheHeight); //and then nuke the texture
+
+						PQSMod_VertexSimplexHeightMap cb_laythe_vshm = cb_laythe.pqsController.gameObject.GetComponentInChildren<PQSMod_VertexSimplexHeightMap>();
+						if (cb_laythe_vshm != null)
+						{
+							cb_laythe_vshm.heightMap = cb_laythe_hm.heightMap;
+						}
+
+						PQSMod_RemoveQuadMap cb_laythe_rqm = cb_laythe.pqsController.gameObject.GetComponentInChildren<PQSMod_RemoveQuadMap>();
+						if (cb_laythe_rqm != null)
+						{
+							cb_laythe_rqm.map = cb_laythe_hm.heightMap;
+						}
                     }
 
                     PQSMod_VertexHeightNoise cb_laythe_vhn = cb_laythe.pqsController.gameObject.GetComponentInChildren<PQSMod_VertexHeightNoise>();
