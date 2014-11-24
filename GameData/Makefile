@@ -3,7 +3,6 @@ MANAGED		:= ${KSPDIR}/KSP_Data/Managed
 GAMEDATA	:= ${KSPDIR}/GameData
 AKGAMEDATA  := ${GAMEDATA}/AlternisKerbol
 PLUGINDIR	:= ${AKGAMEDATA}
-TBGAMEDATA  := ${GAMEDATA}/000_Toolbar
 
 RESGEN2	:= resgen2
 GMCS	:= gmcs
@@ -11,14 +10,9 @@ GIT		:= git
 TAR		:= tar
 ZIP		:= zip
 
-.PHONY: all clean info install
+all:
 
-SUBDIRS=GameData Source
-
-all clean install:
-	@for dir in ${SUBDIRS}; do \
-		make -C $$dir $@ || exit 1; \
-	done
+clean:
 
 info:
 	@echo "Alternis Kerbol Build Information"
@@ -29,3 +23,8 @@ info:
 	@echo "    zip:      ${ZIP}"
 	@echo "    KSP Data: ${KSPDIR}"
 	@echo "    Plugin:   ${PLUGINDIR}"
+
+install: all
+	../tools/copy-files files ${GAMEDATA}
+
+.PHONY: all clean info install

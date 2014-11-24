@@ -29,7 +29,7 @@ version:
 	@./git-version.sh
 
 info:
-	@echo "AlternisKerbol Build Information"
+	@echo "Alternis Kerbol Build Information"
 	@echo "    resgen2:    ${RESGEN2}"
 	@echo "    gmcs:       ${GMCS}"
 	@echo "    gmcs flags: ${GMCSFLAGS}"
@@ -48,6 +48,7 @@ clean:
 
 install: all
 	mkdir -p ${PLUGINDIR}
+	cp ../license.txt ../readme.txt ${AKGAMEDATA}
 	cp ${TARGETS} ${PLUGINDIR}
 
 .PHONY: all clean install
