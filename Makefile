@@ -4,51 +4,28 @@ GAMEDATA	:= ${KSPDIR}/GameData
 AKGAMEDATA  := ${GAMEDATA}/AlternisKerbol
 PLUGINDIR	:= ${AKGAMEDATA}
 TBGAMEDATA  := ${GAMEDATA}/000_Toolbar
-APIEXTDATA	:= ${PLUGINDIR}
 
-TARGETS		:= AlternisKerbol.dll
+RESGEN2	:= resgen2
+GMCS	:= gmcs
+GIT		:= git
+TAR		:= tar
+ZIP		:= zip
 
-AK_FILES := \
-	AlternisConfigGUI.cs	\
-	CometLogic.cs	\
-	LightShifter.cs	\
-	PlanetShifter.cs	\
-	UtilityStash.cs	\
-	$e
+.PHONY: all clean info install
 
-RESGEN2		:= resgen2
-GMCS		:= gmcs
-GMCSFLAGS	:= -optimize -warnaserror
-GIT			:= git
-TAR			:= tar
-ZIP			:= zip
+SUBDIRS=Source
 
-all: ${TARGETS}
-
-.PHONY: version
-version:
-	@./git-version.sh
+all clean install:
+	@for dir in ${SUBDIRS}; do \
+		make -C $$dir $@ || exit 1; \
+	done
 
 info:
-	@echo "AlternisKerbol Build Information"
-	@echo "    resgen2:    ${RESGEN2}"
-	@echo "    gmcs:       ${GMCS}"
-	@echo "    gmcs flags: ${GMCSFLAGS}"
-	@echo "    git:        ${GIT}"
-	@echo "    tar:        ${TAR}"
-	@echo "    zip:        ${ZIP}"
-	@echo "    KSP Data:   ${KSPDIR}"
-
-AlternisKerbol.dll: ${AK_FILES}
-	${GMCS} ${GMCSFLAGS} -t:library -lib:${APIEXTDATA},${MANAGED} \
-		-r:Assembly-CSharp,Assembly-CSharp-firstpass,UnityEngine \
-		-out:$@ $^
-
-clean:
-	rm -f ${TARGETS} AssemblyInfo.cs
-
-install: all
-	mkdir -p ${PLUGINDIR}
-	cp ${TARGETS} ${PLUGINDIR}
-
-.PHONY: all clean install
+	@echo "Extraplanetary Launchpads Build Information"
+	@echo "    resgen2:  ${RESGEN2}"
+	@echo "    gmcs:     ${GMCS}"
+	@echo "    git:      ${GIT}"
+	@echo "    tar:      ${TAR}"
+	@echo "    zip:      ${ZIP}"
+	@echo "    KSP Data: ${KSPDIR}"
+	@echo "    Plugin:   ${PLUGINDIR}"
