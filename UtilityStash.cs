@@ -1,4 +1,4 @@
-﻿//This file contains a bunch of reference functions that I used to help decipher how things work. Feel free to use them to help with your own mods, no need to ask for permission.
+//This file contains a bunch of reference functions that I used to help decipher how things work. Feel free to use them to help with your own mods, no need to ask for permission.
 
 /*
 
