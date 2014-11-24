@@ -76,7 +76,7 @@ namespace AlternisKerbol
         {
             GUI.DragWindow(new Rect(0, 0, 10000, 20));
 
-            GUI.Label(new Rect(20, 20, 320, 40), "NOTE: Settings only take effect\non game restart");
+            GUI.Label(new Rect(20, 20, 320, 40), "NOTE: Settings take effect only\non game restart");
             settingsEnabled = GUI.Toggle(new Rect(10, 70, 320, 20), settingsEnabled, "Mod active");
             GUI.Label(new Rect(40, 90, 320, 20), "Disable this if you want to play on a stock save.");
             settingsHyperwarp = GUI.Toggle(new Rect(10, 130, 320, 20), settingsHyperwarp, "Enable hyperwarp");
