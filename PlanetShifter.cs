@@ -40,8 +40,8 @@ namespace AlternisKerbol
 
         //Warp stuff
         private float[] newWarpLimits = { 0, 0, 0, 0, 0, 0, 0, 200000 };
-        private float[] newWarpLimitsHyper = { 0, 0, 0, 0, 0, 0, 200000, 1000000 };
-        private float[] newWarps = { 1, 10, 50, 100, 1000, 10000, 100000, 1000000 };
+//        private float[] newWarpLimitsHyper = { 0, 0, 0, 0, 0, 0, 200000, 1000000 };
+//        private float[] newWarps = { 1, 10, 50, 100, 1000, 10000, 100000, 1000000 };
 
         //Planets to move
         public CelestialBody cb_sun = null;
@@ -126,7 +126,7 @@ namespace AlternisKerbol
             //Don't bother continuing, mod is disabled...
             if (!alternisEnabled)
                 return;
-
+/*
             float[] wltmp = newWarpLimits;
             if (AKsettings.HasValue("HyperWarp"))
                 if (bool.TryParse(AKsettings.GetValue("HyperWarp"), out btmp))
@@ -135,7 +135,7 @@ namespace AlternisKerbol
                         TimeWarp.fetch.warpRates = newWarps;
                         wltmp = newWarpLimitsHyper;
                     }
-
+*/
             if (AKsettings.HasValue("EnableKerbinMoon"))
                 if (bool.TryParse(AKsettings.GetValue("EnableKerbinMoon"), out btmp))
                     enableKerbinMoon = btmp;
