@@ -63,11 +63,12 @@ namespace AlternisKerbol
             if (HighLogic.LoadedScene == GameScenes.MAINMENU) //just make sure in case it decides to load in the wrong place
             {
                 GUI.color = new Color(0.87f, 0.9f, 1f);
-                if (GUI.Button(new Rect(Screen.width - 200, 0, 120, 30), "Alternis Config"))
+				string title = "Alternis Config";
+                if (GUI.Button(new Rect(Screen.width - 200, 0, 120, 30), title))
                     showSettingsWindow = !showSettingsWindow;
 
                 if (showSettingsWindow)
-                    windowRect = GUI.Window(0, windowRect, MenuSettingsWindow, "Alternis Kerbol Configuration");
+                    windowRect = GUI.Window(0, windowRect, MenuSettingsWindow, AkVersionReport.GetVersion());
             }
         }
 
