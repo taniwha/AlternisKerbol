@@ -27,7 +27,7 @@ namespace AlternisKerbol
         //^debug crap
         private AnimationCurve ionOpacityCurve;
         private AnimationCurve dustOpacityCurve;
-        private float velocity;
+//        private float velocity;
         public float brightness = 1.0f; //Global brightness multiplier, for configuration on each object a comet tail is added to
 
         void Start()
@@ -88,7 +88,7 @@ namespace AlternisKerbol
                     {
                         Vector3 orbitVector = (cometOrbit.getPositionAtUT(Planetarium.GetUniversalTime() + 1) - cometOrbit.getPositionAtUT(Planetarium.GetUniversalTime())) * 0.00001f;
 
-                        velocity = orbitVector.magnitude;
+                        //velocity = orbitVector.magnitude;
                         
                         Vector3 lookVector = Vector3.Normalize(orbitVector - (Vector3.Normalize(transform.position - sun.position) * 0.5f));
                         transform.LookAt(transform.position + lookVector * 100);
