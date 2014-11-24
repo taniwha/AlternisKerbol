@@ -32,8 +32,12 @@ namespace AlternisKerbol
         {
             //Load up all the settings crap
             ConfigNode AKsettings = null;
-            foreach (ConfigNode node in GameDatabase.Instance.GetConfigNodes("AlternisSettings"))
+			var nodes = GameDatabase.Instance.GetConfigNodes("AlternisSettings");
+            foreach (ConfigNode node in nodes)
                 AKsettings = node;
+
+			if (AKsettings == null)
+				return;
 
             bool btmp;
             if (AKsettings.HasValue("Enabled"))

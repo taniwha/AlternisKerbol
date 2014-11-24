@@ -129,35 +129,40 @@ namespace AlternisKerbol
             //Load up all the settings crap
             #region settings
             ConfigNode AKsettings = null;
-            foreach (ConfigNode node in GameDatabase.Instance.GetConfigNodes("AlternisSettings"))
-                AKsettings = node;
+			var nodes = GameDatabase.Instance.GetConfigNodes("AlternisSettings");
+			if (nodes != null) {
+				foreach (ConfigNode node in nodes)
+					AKsettings = node;
+			}
 
-            bool btmp;
-            if (AKsettings.HasValue("Enabled"))
-                if (bool.TryParse(AKsettings.GetValue("Enabled"), out btmp))
-                    alternisEnabled = btmp;
+			if (AKsettings != null) {
+				bool btmp;
+				if (AKsettings.HasValue("Enabled"))
+					if (bool.TryParse(AKsettings.GetValue("Enabled"), out btmp))
+						alternisEnabled = btmp;
 
-            //Don't bother continuing, mod is disabled...
-            if (!alternisEnabled)
-                return;
+				//Don't bother continuing, mod is disabled...
+				if (!alternisEnabled)
+					return;
 /*
-            float[] wltmp = newWarpLimits;
-            if (AKsettings.HasValue("HyperWarp"))
-                if (bool.TryParse(AKsettings.GetValue("HyperWarp"), out btmp))
-                    if (btmp && TimeWarp.fetch != null)
-                    {
-                        TimeWarp.fetch.warpRates = newWarps;
-                        wltmp = newWarpLimitsHyper;
-                    }
+				float[] wltmp = newWarpLimits;
+				if (AKsettings.HasValue("HyperWarp"))
+					if (bool.TryParse(AKsettings.GetValue("HyperWarp"), out btmp))
+						if (btmp && TimeWarp.fetch != null)
+						{
+							TimeWarp.fetch.warpRates = newWarps;
+							wltmp = newWarpLimitsHyper;
+						}
 */
-            if (AKsettings.HasValue("EnableKerbinMoon"))
-                if (bool.TryParse(AKsettings.GetValue("EnableKerbinMoon"), out btmp))
-                    enableKerbinMoon = btmp;
+				if (AKsettings.HasValue("EnableKerbinMoon"))
+					if (bool.TryParse(AKsettings.GetValue("EnableKerbinMoon"), out btmp))
+						enableKerbinMoon = btmp;
 
-            float ftmp;
-            if (AKsettings.HasValue("CometBrightness"))
-                if (float.TryParse(AKsettings.GetValue("CometBrightness"), out ftmp))
-                    globalCometBright = ftmp;
+				float ftmp;
+				if (AKsettings.HasValue("CometBrightness"))
+					if (float.TryParse(AKsettings.GetValue("CometBrightness"), out ftmp))
+						globalCometBright = ftmp;
+			}
 
             #endregion
             //Solar system is instantiated at the main menu and transferred to other scenes (apparantly), so it doesn't have to be loaded each time.
