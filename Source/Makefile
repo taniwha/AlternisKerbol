@@ -9,10 +9,12 @@ TARGETS		:= AlternisKerbol.dll
 
 AK_FILES := \
 	AlternisConfigGUI.cs	\
+	AssemblyInfo.cs	\
 	CometLogic.cs	\
 	LightShifter.cs	\
 	PlanetShifter.cs	\
 	UtilityStash.cs	\
+	VersionReport.cs \
 	$e
 
 RESGEN2		:= resgen2
@@ -22,7 +24,7 @@ GIT			:= git
 TAR			:= tar
 ZIP			:= zip
 
-all: ${TARGETS}
+all: version ${TARGETS}
 
 .PHONY: version
 version:
