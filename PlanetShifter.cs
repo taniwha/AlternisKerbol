@@ -754,10 +754,10 @@ namespace AlternisKerbol
                     }
 
                     PQSMod_VertexSimplexHeightAbsolute cb_tylo_vsha = cb_tylo.pqsController.transform.GetComponentInChildren<PQSMod_VertexSimplexHeightAbsolute>();
-                    if (cb_tylo_vsh != null)
+                    if (cb_tylo_vsha != null)
                     {
-                        cb_tylo_vsh.deformity = 3100;
-                        cb_tylo_vsh.frequency = 6;
+                        cb_tylo_vsha.deformity = 3100;
+                        cb_tylo_vsha.frequency = 6;
                     }
 
                     #endregion
